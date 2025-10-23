@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUA – Freightmen of Ukraine Army</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="short icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/js.js" defer></script>
+    <script src="js/getCookie.js" defer></script>
+
+    <a class="some_problems" href="https://discord.gg/febsvYmF7n" target="_blank">
+        <div style="display: flex; justify-content: center; align-items: center;">
+            Виникли проблеми? </div>
+        <div class="discord-btn">
+            <img width="38px" alt="Технічна підтримка" src="/images/ytka.png">
+        </div>
+    </a>
+
+    <div class="cookie__container" style="display: none;">
+        <img src="/images/cookie.png" width="46px" height="46px">
+        <p style="margin-left: 20px;">Сайт використвує cookie файли</p>
+        <div class="container-btns-cookie">
+            <button class="btn-cookie accept-btn" id="accept-cookie">Прийняти</button>
+            <button class="btn-cookie cancel-btn" id="cancel-cookie">Скасувати</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.mobile__menu');
+            const closeBtn = document.querySelector('.btn__close-mobile-menu');
+            const problems = document.querySelector('.some_problems');
+            const cookieCont = document.querySelector('.cookie__container');
+
+            toggleBtn.addEventListener('click', () => {
+                menu.classList.add('active');
+                problems?.classList.add('hidden-fade');
+                cookieCont?.classList.add('hidden-fade');
+            });
+
+            closeBtn.addEventListener('click', () => {
+                menu.classList.remove('active');
+                problems?.classList.remove('hidden-fade');
+                cookieCont?.classList.remove('hidden-fade');
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header id="header" class="header header_scroll">
+        <div class="header__container-navigation">
+            <div class="header__left-navigation">
+                <a style="margin-right: 95px;" href="https://fua-company/fua.vtc">
+                    <img class="header_logo" src="images/logo.png">
+                </a>
+                <button class="menu-toggle" style="display: none;">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <nav>
+                    <ul class="header_menu">
+                        <li>
+                            <a id="link__header" href="/">
+                                <svg fill="none" viewBox="0 0 24 24" class="icon_home">
+                                    <path fill="#fff"
+                                        d="m20.04 6.82-5.76-4.03c-1.57-1.1-3.98-1.04-5.49.13L3.78 6.83c-1 .78-1.79 2.38-1.79 3.64v6.9c0 2.55 2.07 4.63 4.62 4.63h10.78c2.55 0 4.62-2.07 4.62-4.62V10.6c0-1.35-.87-3.01-1.97-3.78Z"
+                                        opacity=".4" />
+                                    <path fill="#fff"
+                                        d="M12 18.75c-.41 0-.75-.34-.75-.75v-3c0-.41.34-.75.75-.75s.75.34.75.75v3c0 .41-.34.75-.75.75Z" />
+                                </svg>
+                                <span>Головна</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="link__header" href="/partners">
+                                Партнери
+                            </a>
+                        </li>
+                        <li>
+                            <a id="link__header" href="/about us">
+                                Про нас
+                            </a>
+                        </li>
+                        <li>
+                            <a id="link__header" href="/avtopark">
+                                Автопарк
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="link__header" onclick="openDropMenuInformation(event)">
+                                Інформація
+                            </a>
+                            <div class="dropMenu-information">
+                                <a href="/team" class="btn__dropMenuInfo">
+                                    Staff Team
+                                </a>
+                                <a href="/rules" class="btn__dropMenuInfo">
+                                    Правила
+                                </a>
+                                <a href="/statistics" class="btn__dropMenuInfo">
+                                    <span class="active__dropMenu">Статистика сервера</span>
+                                </a>
+                                <a href="/apply" class="btn__dropMenuInfo">
+                                    Приєднуйтесь до нашої команди
+                                </a>
+                            </div>
+                        </li>
+                        <div class="container__language">
+                            <div class="container__language-selected" onclick="toggleLanguageMenu()">
+                                <a href="#" id="currentLang">
+                                    <img src="/images/languagues/uk.svg" id="currentLangImg">
+                                </a>
+                            </div>
+                            <div class="languages__container-dropMenu" id="languageMenu">
+                                <!-- <a href="/en/" id="en" onclick="changeLanguage(this.id)"
+                                            class="block__language">
+                                            <img src="/images/languagues/en.svg">
+                                            <span>English</span>
+                                        </a> -->
+                                <a href="#" id="ua" onclick="changeLanguage(this.id)" class="block__language">
+                                    <img src="/images/languagues/uk.svg">
+                                    <span>UA</span>
+                                </a>
+                            </div>
+                        </div>
+                        <a target="_blank" href="https://discord.gg/febsvYmF7n" class="help__btn-ds">
+                            Тех.підтримка
+                        </a>
+                        <!--<a href="/cabinet/login" class="header__user-info">
+                                    <div class="header__user-nickname">xdion</div>
+                                    <img src="/images/developers/xdion.jpg" class="header__user-avatar">
+                                </a>
+                                <a target="_blank" href="/cabiet/registration" class="help__btn-ds">
+                                    Зареєструватися
+                                </a> -->
+                    </ul>
+                </nav>
+                <div class="mobile__menu">
+                    <div class="mobile__menu-header">
+                        <a href="https://fua-company/fua.vtc" class="mobile__logo">
+                            <img class="header_logo" src="images/logo.png" alt="Logo">
+                        </a>
+                        <div class="btn__close-mobile-menu">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <nav class="mobile__navigation">
+                        <ul class="navigation__mobile-menu">
+                            <li class="menu__item">
+                                <a href="/" class="menu__link">
+                                    <span class="menu__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="m20.04 6.82-5.76-4.03c-1.57-1.1-3.98-1.04-5.49.13L3.78 6.83c-1 .78-1.79 2.38-1.79 3.64v6.9c0 2.55 2.07 4.63 4.62 4.63h10.78c2.55 0 4.62-2.07 4.62-4.62V10.6c0-1.35-.87-3.01-1.97-3.78Z"
+                                                fill="white" opacity="0.4" />
+                                            <path
+                                                d="M12 18.75c-.41 0-.75-.34-.75-.75v-3c0-.41.34-.75.75-.75s.75.34.75.75v3c0 .41-.34.75-.75.75Z"
+                                                fill="white" />
+                                        </svg>
+                                    </span>
+                                    <span class="menu__text">Головна</span>
+                                </a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="/partners" class="menu__link">
+                                    <span class="menu__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M16 3.13C16.8604 3.3503 17.623 3.8507 18.1676 4.55231C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89317 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                        </svg>
+                                    </span>
+                                    <span class="menu__text">Партнери</span>
+                                </a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="/about us" class="menu__link">
+                                    <span class="menu__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M9.09 9C9.3251 8.33167 9.78915 7.76811 10.4 7.40913C11.0108 7.05016 11.7289 6.91894 12.4272 7.03871C13.1255 7.15848 13.7588 7.52152 14.2151 8.06353C14.6713 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path d="M12 17H12.01" stroke="white" stroke-width="2"
+                                                stroke-linecap="round" />
+                                        </svg>
+                                    </span>
+                                    <span class="menu__text">Про нас</span>
+                                </a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="/avtopark" class="menu__link">
+                                    <span class="menu__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M16 3H1V16H16V3Z" stroke="white" stroke-width="2"
+                                                stroke-linecap="round" />
+                                            <path d="M16 8H20L23 11V16H16V8Z" stroke="white" stroke-width="2"
+                                                stroke-linecap="round" />
+                                            <path
+                                                d="M5.5 21C6.88071 21 8 19.8807 8 18.5C8 17.1193 6.88071 16 5.5 16C4.11929 16 3 17.1193 3 18.5C3 19.8807 4.11929 21 5.5 21Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M18.5 21C19.8807 21 21 19.8807 21 18.5C21 17.1193 19.8807 16 18.5 16C17.1193 16 16 17.1193 16 18.5C16 19.8807 17.1193 21 18.5 21Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                        </svg>
+                                    </span>
+                                    <span class="menu__text">Автопарк</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="mobile__menu-footer">
+                        <div class="social__links">
+                            <a href="https://discord.gg/u3b2fdVGBh" target="_blank" class="social__link">Discord</a>
+                            <a href="https://www.tiktok.com/@freightmen.of.ukr" target="_blank"
+                                class="social__link">TikTok</a>
+                            <a href="https://www.instagram.com/freightmen_of_ukraine_army/?igsh=Y2ZubWRsbnptbHJv#"
+                                target="_blank" class="social__link">Instagram</a>
+                        </div>
+                        <div class="contact__info">
+                            <p>fua.vtc@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <h1 class="text__400 color__primary-text" style="text-align: center; margin-top: 200px;">Statistics | Статистика
+    </h1>
+    <div style="display: flex; justify-content: center; align-items: center; margin-top: 20px;">
+        <div class="uptime__block">
+            <div class="uptime__header">
+                <span>🟢 Website</span>
+                <span class="uptime__percent">100.000% uptime</span>
+            </div>
+            <div class="uptime__bar" id="uptimeBar"></div>
+            <div class="uptime__footer">
+                <span>90 days ago</span>
+                <span>Today</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer__flex">
+            <a href="https://fua-company/fua.vtc">
+                <img class="footer__logo" src="images/main_logo.png">
+            </a>
+            <div class="colums__footer">
+                <div class="column__footer">
+                    <div class="footer__title">
+                        Інформація
+                    </div>
+                    <li>
+                        <a href="privacy-policy" class="footer__link">
+                            Політика конфіденційності
+                        </a>
+                    </li>
+                </div>
+
+                <div class="column__footer">
+                    <div class="footer__title">
+                        Навігація
+                    </div>
+                    <ul class="footer__links">
+                        <li>
+                            <a href="clicks" class="footer__link">
+                                Соц. мережі
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="recruitment" class="footer__link">
+                                Рекрутація
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="rules" class="footer__link">
+                                Правила
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="column__footer">
+                    <div class="footer__title">
+                        Контакти
+                    </div>
+                    <ul class="footer__links">
+                        <li>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fua.vtc@gmail.com"
+                                class="footer__link" target="_blank">
+                                fua.vtc@gmail.com
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://discord.gg/febsvYmF7n" target="_blank" class="footer__link">
+                                Технічна підтримка
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="about us" class="footer__link">
+                                Про нас
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <hr style="border: 1px solid gray; width: 100%; margin-top: 20px; margin-bottom: 20px;">
+        <p style="text-align: center; color: rgb(77, 77, 77);">© Freightmen of Ukraine Army VTC, 2025</p>
+        </div>
+    </footer>
+
+    <script src="/js/stats.js"></script>
+
+</body>
+
+</html>

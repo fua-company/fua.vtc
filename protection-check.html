@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freightmen of Ukraine Army - DDoS Protection</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="short icon" href="images/favicon.ico">
+    <script src="/js/protection.js" defer></script>
+</head>
+
+<body>
+    <script>
+        const navType = performance.getEntriesByType("navigation")[0].type;
+        if (navType === "navigate" && (location.pathname === "/" || location.pathname === "/index.html")) {
+            const protection = document.createElement("div");
+            protection.innerHTML = `
+    <section class="main__section section__protection">
+        <div style="background: rgba(0, 0, 0, 0.889); width: 100%; height: 100vh; position: absolute;">
+            <div class="main__content-protection">
+                <img src="images/main_logo.png" width="122px">
+                <span class="title__protection">Обробляємо ваш запит, будь-ласка, зачекайте...</span>
+                <span class="text__protection">Проверяем, человек ли вы. Это может занять несколько секунд.</span>
+                <div class="loader-protection"></div>
+                <div style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin-top: 280px;">
+                    <div class="block__ddos">
+                        <img src="/images/ddos.png" alt="" width="16px">
+                        DDoS Protection
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>`;
+            document.body.innerHTML = "";
+            document.body.appendChild(protection);
+            setTimeout(() => location.replace("/"), 3000);
+        }
+    </script>
+
+
+</body>
+
+</html>

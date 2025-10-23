@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google" value="notranslate">
+    <title>Freightmen of Ukraine – Help Center</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="short icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">>
+    <link href="https://fonts.cdnfonts.com/css/abc-ginto-nord-unlicensed-trial" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
+    <script src="/js/js.js" defer></script>
+    <script src="/js/support.js" defer></script>
+    <a class="some_problems" href="https://discord.gg/febsvYmF7n" target="_blank">
+        <div style="display: flex; justify-content: center; align-items: center;">
+            Виникли проблеми? </div>
+        <div class="discord-btn">
+            <img width="38px" alt="Технічна підтримка" src="/images/ytka.png">
+        </div>
+    </a>
+
+    <div class="cookie__container" style="display: none;">
+        <img src="/images/cookie.png" width="46px" height="46px">
+        <p style="margin-left: 20px;">Сайт використвує cookie файли</p>
+        <div class="container-btns-cookie">
+            <button class="btn-cookie accept-btn" id="accept-cookie">Прийняти</button>
+            <button class="btn-cookie cancel-btn" id="cancel-cookie">Скасувати</button>
+        </div>
+    </div>
+    <style>
+        .popup__recruitment {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.216);
+            z-index: 100;
+            display: none;
+        }
+
+        .popup__title {
+            color: var(--primary);
+            font-size: 26px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .popup__content-recruitment {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            max-width: 540px;
+            width: 100%;
+            padding: 32px;
+            border: 1px solid rgba(255, 255, 255, .05);
+            background: #0f0f16;
+            border-radius: 8px;
+            color: var(--primary);
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.mobile__menu');
+            const closeBtn = document.querySelector('.btn__close-mobile-menu');
+            const problems = document.querySelector('.some_problems');
+            const cookieCont = document.querySelector('.cookie__container');
+
+            toggleBtn.addEventListener('click', () => {
+                menu.classList.add('active');
+                problems?.classList.add('hidden-fade');
+                cookieCont?.classList.add('hidden-fade');
+            });
+
+            closeBtn.addEventListener('click', () => {
+                menu.classList.remove('active');
+                problems?.classList.remove('hidden-fade');
+                cookieCont?.classList.remove('hidden-fade');
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <header id="header" class="header header_scroll">
+        <div class="header__container-navigation">
+            <div class="header__left-navigation">
+                <a style="margin-right: 95px;" href="https://fua-company/fua.vtc">
+                    <img class="header_logo" src="images/logo.png">
+                </a>
+                <button class="menu-toggle" style="display: none;">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <nav>
+                    <ul class="header_menu">
+                        <li>
+                            <a id="link__header" href="/">
+                                <svg fill="none" viewBox="0 0 24 24" class="icon_home">
+                                    <path fill="#fff"
+                                        d="m20.04 6.82-5.76-4.03c-1.57-1.1-3.98-1.04-5.49.13L3.78 6.83c-1 .78-1.79 2.38-1.79 3.64v6.9c0 2.55 2.07 4.63 4.62 4.63h10.78c2.55 0 4.62-2.07 4.62-4.62V10.6c0-1.35-.87-3.01-1.97-3.78Z"
+                                        opacity=".4" />
+                                    <path fill="#fff"
+                                        d="M12 18.75c-.41 0-.75-.34-.75-.75v-3c0-.41.34-.75.75-.75s.75.34.75.75v3c0 .41-.34.75-.75.75Z" />
+                                </svg>
+                                <span>Головна</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="link__header" href="/partners">
+                                Партнери
+                            </a>
+                        </li>
+                        <li>
+                            <a id="link__header" href="/about us">
+                                Про нас
+                            </a>
+                        </li>
+                        <li>
+                            <a id="link__header" href="/avtopark">
+                                Автопарк
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="link__header" onclick="openDropMenuInformation(event)">
+                                Інформація
+                            </a>
+                            <div class="dropMenu-information">
+                                <a href="/team" class="btn__dropMenuInfo">
+                                    Staff Team
+                                </a>
+                                <a href="/rules" class="btn__dropMenuInfo">
+                                    Правила
+                                </a>
+                                <a href="/statistics" class="btn__dropMenuInfo">
+                                    Статистика сервера
+                                </a>
+                                <a href="/apply" class="btn__dropMenuInfo">
+                                    Приєднуйтесь до нашої команди
+                                </a>
+                            </div>
+                        </li>
+                        <div class="container__language">
+                            <div class="container__language-selected" onclick="toggleLanguageMenu()">
+                                <a href="#" id="currentLang">
+                                    <img src="/images/languagues/uk.svg" id="currentLangImg">
+                                </a>
+                            </div>
+                            <div class="languages__container-dropMenu" id="languageMenu">
+                                <!-- <a href="/en/" id="en" onclick="changeLanguage(this.id)"
+                                            class="block__language">
+                                            <img src="/images/languagues/en.svg">
+                                            <span>English</span>
+                                        </a> -->
+                                <a href="#" id="ua" onclick="changeLanguage(this.id)" class="block__language">
+                                    <img src="/images/languagues/uk.svg">
+                                    <span>UA</span>
+                                </a>
+                            </div>
+                        </div>
+                        <a target="_blank" href="https://discord.gg/febsvYmF7n" class="help__btn-ds">
+                            Тех.підтримка
+                        </a>
+                        <!--<a href="/cabinet/login" class="header__user-info">
+                                    <div class="header__user-nickname">xdion</div>
+                                    <img src="/images/developers/xdion.jpg" class="header__user-avatar">
+                                </a>
+                                <a target="_blank" href="/cabiet/registration" class="help__btn-ds">
+                                    Зареєструватися
+                                </a> -->
+                    </ul>
+                </nav>
+                <div class="mobile__menu">
+                    <div class="mobile__menu-header">
+                        <a href="https://fua-company/fua.vtc" class="mobile__logo">
+                            <img class="header_logo" src="images/logo.png" alt="Logo">
+                        </a>
+                        <div class="btn__close-mobile-menu">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <nav class="mobile__navigation">
+                        <ul class="navigation__mobile-menu">
+                            <li class="menu__item">
+                                <a href="/" class="menu__link">
+                                    <span class="menu__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="m20.04 6.82-5.76-4.03c-1.57-1.1-3.98-1.04-5.49.13L3.78 6.83c-1 .78-1.79 2.38-1.79 3.64v6.9c0 2.55 2.07 4.63 4.62 4.63h10.78c2.55 0 4.62-2.07 4.62-4.62V10.6c0-1.35-.87-3.01-1.97-3.78Z"
+                                                fill="white" opacity="0.4" />
+                                            <path
+                                                d="M12 18.75c-.41 0-.75-.34-.75-.75v-3c0-.41.34-.75.75-.75s.75.34.75.75v3c0 .41-.34.75-.75.75Z"
+                                                fill="white" />
+                                        </svg>
+                                    </span>
+                                    <span class="menu__text">Головна</span>
+                                </a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="/partners" class="menu__link">
+                                    <span class="menu__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M16 3.13C16.8604 3.3503 17.623 3.8507 18.1676 4.55231C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89317 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                        </svg>
+                                    </span>
+                                    <span class="menu__text">Партнери</span>
+                                </a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="/about us" class="menu__link">
+                                    <span class="menu__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M9.09 9C9.3251 8.33167 9.78915 7.76811 10.4 7.40913C11.0108 7.05016 11.7289 6.91894 12.4272 7.03871C13.1255 7.15848 13.7588 7.52152 14.2151 8.06353C14.6713 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path d="M12 17H12.01" stroke="white" stroke-width="2"
+                                                stroke-linecap="round" />
+                                        </svg>
+                                    </span>
+                                    <span class="menu__text">Про нас</span>
+                                </a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="/avtopark" class="menu__link">
+                                    <span class="menu__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M16 3H1V16H16V3Z" stroke="white" stroke-width="2"
+                                                stroke-linecap="round" />
+                                            <path d="M16 8H20L23 11V16H16V8Z" stroke="white" stroke-width="2"
+                                                stroke-linecap="round" />
+                                            <path
+                                                d="M5.5 21C6.88071 21 8 19.8807 8 18.5C8 17.1193 6.88071 16 5.5 16C4.11929 16 3 17.1193 3 18.5C3 19.8807 4.11929 21 5.5 21Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M18.5 21C19.8807 21 21 19.8807 21 18.5C21 17.1193 19.8807 16 18.5 16C17.1193 16 16 17.1193 16 18.5C16 19.8807 17.1193 21 18.5 21Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                        </svg>
+                                    </span>
+                                    <span class="menu__text">Автопарк</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="mobile__menu-footer">
+                        <div class="social__links">
+                            <a href="https://discord.gg/u3b2fdVGBh" target="_blank" class="social__link">Discord</a>
+                            <a href="https://www.tiktok.com/@freightmen.of.ukr" target="_blank"
+                                class="social__link">TikTok</a>
+                            <a href="https://www.instagram.com/freightmen_of_ukraine_army/?igsh=Y2ZubWRsbnptbHJv#"
+                                target="_blank" class="social__link">Instagram</a>
+                        </div>
+                        <div class="contact__info">
+                            <p>fua.vtc@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="main__supportCenter">
+        <div class="container__title">
+            <div style="display: flex; flex-direction: column; gap: 10px; ">
+                <span class="title__supportCenter">Центр</span>
+                <span class="title__supportCenter">Допомоги</span>
+            </div>
+            <img src="/images/supportCenter/3.png" class="img__supportCenter">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 135px; text-align: center;">
+            <span class="title__supportCenter title__bottom-supportCenter">Потрібна допомога?</span>
+            <span class="title__supportCenter title__bottom-supportCenter">Ми вам допоможемо.</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-top: 200px; font-size: 22px;">
+            <img src="/images/supportCenter/2.png" class="img__supportCenter-bottom">
+            <span class="text__problem">Подай заявку вже зараз</span>
+            <!-- #problem-application -->
+            <a href="https://discord.gg/u3b2fdVGBh" target="_blank" class="btn__problem">Подати заявку</a>
+        </div>
+        <a href="#blocks__help" class="main-block__down-scroll">
+            <span>вниз</span>
+            <img src="/images/supportCenter/scroll-down.svg" alt="">
+        </a>
+        <section id="blocks__help" style="margin-bottom: 20px;">
+            <div class="blocks__guide">
+                <a href="/recruitment#popup__instruction" class="block__guide">
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" viewBox="0 0 32 32">
+                            <circle cx="16" cy="16" r="16" fill="url(#glow)" />
+                            <defs>
+                                <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#FFF176" stop-opacity="0.6" />
+                                    <stop offset="100%" stop-color="#FFC107" stop-opacity="0" />
+                                </radialGradient>
+                            </defs>
+                            <circle cx="14" cy="14" r="6" stroke="#FFC107" stroke-width="2" />
+                            <line x1="19" y1="19" x2="24" y2="24" stroke="#FFC107" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                        <span class="title__guide">Вступ в
+                            компанію</span>
+                    </div>
+                    <div class="guide__content">
+                        <span style="margin-bottom: 10px; display: block;">Дізнайтеся крок за кроком, як приєднатися до
+                            нашої команди —
+                            перегляньте детальну
+                            інструкцію.</span>
+                        <img src="/images/supportCenter/guide1.jpeg" loading="lazy" width="256px"
+                            style="border-radius: 10px;">
+                    </div>
+                </a>
+                <a href="/avtopark" class="block__guide">
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="16" fill="url(#glow)" />
+                            <defs>
+                                <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#FFD54F" stop-opacity="0.6" />
+                                    <stop offset="100%" stop-color="#FFC107" stop-opacity="0" />
+                                </radialGradient>
+                            </defs>
+                            <path class="building-outline"
+                                d="M11 12H9V26H23V12H21M11 12V8H21V12M11 12H21M15 16H17M15 20H17M15 24H17"
+                                stroke="#FFA000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path class="building-outline" style="animation-delay: 0.3s" d="M13 12V16M19 12V16"
+                                stroke="#FFC107" stroke-width="2" stroke-linecap="round" />
+                            <path class="building-outline" style="animation-delay: 0.6s" d="M25 19L28 22M28 19L25 22"
+                                stroke="#FFC107" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                        <span class="title__guide">Вигляд вантажівки</span>
+                    </div>
+                    <div class="guide__content">
+                        <span style="margin-bottom: 10px; display: block;">
+                            Ознайомтеся з усіма деталями зовнішнього вигляду нашої машини — розгляньте її конструкцію та
+                            особливості крок за кроком.
+                        </span>
+                        <img src="/images/supportCenter/guide2.jpg" loading="lazy" width="256px"
+                            style="border-radius: 10px;">
+                    </div>
+                </a>
+                <a href="#" class="block__guide">
+                    <div style="display: flex; align-items: center; gap: 5px;">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="16" cy="16" r="16" fill="url(#glow)" />
+                            <defs>
+                                <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+                                    <stop offset="0%" stop-color="#FFD54F" stop-opacity="0.6" />
+                                    <stop offset="100%" stop-color="#FFC107" stop-opacity="0" />
+                                </radialGradient>
+                            </defs>
+                            <rect x="9" y="12" width="14" height="10" rx="1" stroke="#FFA000" stroke-width="2"
+                                fill="none" />
+                            <rect x="8" y="22" width="16" height="2" rx="1" stroke="#FFA000" stroke-width="2"
+                                fill="none" />
+                            <rect x="10" y="13" width="12" height="8" rx="0.5" fill="#1A237E" stroke="#FFC107"
+                                stroke-width="0.5" />
+                            <line x1="10" y1="23" x2="22" y2="23" stroke="#FFA000" stroke-width="1" />
+                            <line x1="12" y1="22.5" x2="12" y2="23.5" stroke="#FFA000" stroke-width="1" />
+                            <line x1="14" y1="22.5" x2="14" y2="23.5" stroke="#FFA000" stroke-width="1" />
+                            <line x1="16" y1="22.5" x2="16" y2="23.5" stroke="#FFA000" stroke-width="1" />
+                            <line x1="18" y1="22.5" x2="18" y2="23.5" stroke="#FFA000" stroke-width="1" />
+                            <line x1="20" y1="22.5" x2="20" y2="23.5" stroke="#FFA000" stroke-width="1" />
+                            <circle cx="16" cy="16" r="2" fill="#FFC107" />
+                            <path d="M13 14L19 18" stroke="#FFC107" stroke-width="1" stroke-linecap="round" />
+                            <path class="building-outline" style="animation-delay: 0.6s" d="M25 19L28 22M28 19L25 22"
+                                stroke="#FFC107" stroke-width="2" stroke-linecap="round" />
+                        </svg>
+                        <span class="title__guide">FuaTrucker</span>
+                    </div>
+                    <div class="guide__content">
+                        <span style="margin-bottom: 10px; display: block;">
+                            Дізнайтеся, як правильно завантажити наш тракер та під'єднати його до гри.
+                        </span>
+                        <span class="text__dev-guide">Скоро, в
+                            розробці</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+        <!-- <section class="section__support">
+            <div
+                style="background: rgba(0, 0, 0, 0.452); width: 100%; height: 100vh; position: absolute; display: flex; justify-content: center; align-items: center;">
+                <div class="container__input-support">
+                    <span class="title__send-list--support---btn">Подача заявки</span>
+                    <div class="container__content-input--support" style="width: 350px;" id="problem-application">
+                        <form>
+                            <div class="support-input-container">
+                                <div class="input-container" style="margin-top: 10px;">
+                                    <svg class="input-icon--donate" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" width="24" height="24" fill="none" role="img"
+                                        aria-hidden="true" focusable="false">
+                                        <path opacity=".4"
+                                            d="M12 2C9.38 2 7.25 4.13 7.25 6.75c0 2.57 2.01 4.65 4.63 4.74.08-.01.16-.01.22 0h.07a4.738 4.738 0 0 0 4.58-4.74C16.75 4.13 14.62 2 12 2Z"
+                                            fill="#fff" />
+                                        <path
+                                            d="M17.08 14.15c-2.79-1.86-7.34-1.86-10.15 0-1.27.85-1.97 2-1.97 3.23s.7 2.37 1.96 3.21C8.32 21.53 10.16 22 12 22c1.84 0 3.68-.47 5.08-1.41 1.26-.85 1.96-1.99 1.96-3.23-.01-1.23-.7-2.37-1.96-3.21Z"
+                                            fill="#fff" />
+                                    </svg>
+                                    <input type="text" name="nickname" id="nickname" autocomplete="on"
+                                        placeholder="Як до Вас звертатися?" required
+                                        class="support__input donate__input">
+                                </div>
+                                <div class="input-container" style="margin-top: 10px;">
+                                    <svg class="input-icon--donate" width="24" height="24" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.4"
+                                            d="M17 20.5H7c-3 0-5-1.5-5-5v-7c0-3.5 2-5 5-5h10c3 0 5 1.5 5 5v7c0 3.5-2 5-5 5Z"
+                                            fill="white" />
+                                        <path
+                                            d="M12 12.87c-.84 0-1.69-.26-2.34-.79l-3.13-2.5a.748.748 0 0 1 .93-1.17l3.13 2.5c.76.61 2.05.61 2.81 0l3.13-2.5c.32-.26.8-.21 1.05.12.26.32.21.8-.12 1.05l-3.13 2.5c-.64.53-1.49.79-2.33.79Z"
+                                            fill="white" />
+                                    </svg>
+                                    <input type="email" name="email" id="email" autocomplete="on" placeholder="Email"
+                                        required class="support__input donate__input">
+                                </div>
+                                <div class="input-container" style="margin-top: 10px;">
+                                    <svg class="input-icon--donate" fill="none" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M7.24 2h-1.9C3.15 2 2 3.15 2 5.33v1.9c0 2.18 1.15 3.33 3.33 3.33h1.9c2.18 0 3.33-1.15 3.33-3.33v-1.9C10.57 3.15 9.42 2 7.24 2Z"
+                                            fill="#fff" />
+                                        <path opacity=".4"
+                                            d="M18.67 2h-1.9c-2.18 0-3.33 1.15-3.33 3.33v1.9c0 2.18 1.15 3.33 3.33 3.33h1.9c2.18 0 3.33-1.15 3.33-3.33v-1.9C22 3.15 20.85 2 18.67 2Z"
+                                            fill="#fff" />
+                                        <path
+                                            d="M18.67 13.43h-1.9c-2.18 0-3.33 1.15-3.33 3.33v1.9c0 2.18 1.15 3.33 3.33 3.33h1.9c2.18 0 3.33-1.15 3.33-3.33v-1.9c0-2.18-1.15-3.33-3.33-3.33Z"
+                                            fill="#fff" />
+                                        <path opacity=".4"
+                                            d="M7.24 13.43h-1.9C3.15 13.43 2 14.58 2 16.76v1.9C2 20.85 3.15 22 5.33 22h1.9c2.18 0 3.33-1.15 3.33-3.33v-1.9c.01-2.19-1.14-3.34-3.32-3.34Z"
+                                            fill="#fff" />
+                                    </svg>
+                                    <textarea name="problem" id="problem" autocomplete="on"
+                                        placeholder="Опишіть проблему" required maxlength="500"
+                                        class="support__input donate__input"></textarea>
+                                </div>
+                                <div class="container__added-images">
+                                    <div class="container__img" style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                    </div>
+
+                                    <button type="button" style="margin-top: 5px;" class="help__btn-ds btn__add-images"
+                                        id="addImageBtn">Додати
+                                        зображення</button>
+
+                                    <input type="file" id="imageInput" accept="image/*" multiple style="display: none;">
+                                </div>
+                                <div class="h-captcha" data-sitekey="8bca2f46-8b0c-463c-ab2a-805425165ad2"
+                                    style="margin-top: 10px;"></div>
+                                <div
+                                    style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin-top: 20px;">
+                                    <button type="submit" class="btn__support">Надіслати</button>
+                                    <div
+                                        style="display: flex; align-items: center; gap: 10px; margin-top: 30px; color: rgb(82, 82, 82);">
+                                        <img src="images/logo.png" width="28px">
+                                        <span>Freightmen of Ukraine Army</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+    </div>
+
+    <div style="display: flex; justify-content: center; align-items: center;">
+        <div class="popup__recruitment" id="popupRecruitment">
+            <div class="popup__content-recruitment">
+                <div class="btn__close-popup" id="btn__close-popup">
+                    <img src="/images/close.svg">
+                </div>
+                <span class="popup__title">Інформація</span>
+                <span>Можна додати тільки 3 картинки</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const addImageBtn = document.getElementById('addImageBtn');
+        const imageInput = document.getElementById('imageInput');
+        const containerImg = document.querySelector('.container__img');
+
+        const popupRecruitment = document.getElementById('popupRecruitment');
+        const btnClosePopup = document.getElementById('btn__close-popup');
+
+        addImageBtn.addEventListener('click', () => {
+            imageInput.click();
+        });
+
+        imageInput.addEventListener('change', () => {
+            const files = Array.from(imageInput.files);
+
+            if (containerImg.children.length + files.length > 3) {
+                showPopup();
+                return;
+            }
+
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const wrapper = document.createElement('div');
+                    wrapper.classList.add('image-wrapper');
+
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.style.objectFit = 'cover';
+
+                    const deleteBtn = document.createElement('div');
+                    deleteBtn.classList.add('btn__delete-img');
+                    deleteBtn.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                    <path d="M11.1152 3.91503C11.3868 3.73594 11.756 3.7658 11.9951 4.00488C12.2341 4.24395 12.264 4.61309 12.0849 4.88476L11.9951 4.99511L8.99018 7.99999L11.9951 11.0049L12.0849 11.1152C12.264 11.3869 12.2341 11.756 11.9951 11.9951C11.756 12.2342 11.3868 12.2641 11.1152 12.085L11.0048 11.9951L7.99995 8.99023L4.99506 11.9951C4.7217 12.2685 4.2782 12.2685 4.00483 11.9951C3.73146 11.7217 3.73146 11.2782 4.00483 11.0049L7.00971 7.99999L4.00483 4.99511L3.91499 4.88476C3.73589 4.61309 3.76575 4.24395 4.00483 4.00488C4.24391 3.7658 4.61305 3.73594 4.88471 3.91503L4.99506 4.00488L7.99995 7.00976L11.0048 4.00488L11.1152 3.91503Z"></path>
+                </svg>
+            `;
+
+                    deleteBtn.addEventListener('click', () => {
+                        wrapper.remove();
+                    });
+
+                    wrapper.appendChild(img);
+                    wrapper.appendChild(deleteBtn);
+                    containerImg.appendChild(wrapper);
+                };
+                reader.readAsDataURL(file);
+            });
+
+            imageInput.value = '';
+        });
+
+        function showPopup() {
+            popupRecruitment.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        btnClosePopup.addEventListener('click', () => {
+            popupRecruitment.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+    </script>
+
+</body>
+
+</html>

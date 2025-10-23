@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUA – Freightmen of Ukraine Army</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="short icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/js.js" defer></script>
+    <script src="js/getCookie.js" defer></script>
+    <script src="js/recruitment.js" defer></script>
+
+    <a class="some_problems" href="https://discord.gg/febsvYmF7n" target="_blank">
+        <div style="display: flex; justify-content: center; align-items: center;">
+            Виникли проблеми? </div>
+        <div class="discord-btn">
+            <img width="38px" alt="Технічна підтримка" src="/images/ytka.png">
+        </div>
+    </a>
+
+    <div class="cookie__container" style="display: none;">
+        <img src="/images/cookie.png" width="46px" height="46px">
+        <p style="margin-left: 20px;">Сайт використвує cookie файли</p>
+        <div class="container-btns-cookie">
+            <button class="btn-cookie accept-btn" id="accept-cookie">Прийняти</button>
+            <button class="btn-cookie cancel-btn" id="cancel-cookie">Скасувати</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('.mobile__menu');
+            const closeBtn = document.querySelector('.btn__close-mobile-menu');
+            const problems = document.querySelector('.some_problems');
+            const cookieCont = document.querySelector('.cookie__container');
+
+            toggleBtn.addEventListener('click', () => {
+                menu.classList.add('active');
+                problems?.classList.add('hidden-fade');
+                cookieCont?.classList.add('hidden-fade');
+            });
+
+            closeBtn.addEventListener('click', () => {
+                menu.classList.remove('active');
+                problems?.classList.remove('hidden-fade');
+                cookieCont?.classList.remove('hidden-fade');
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header id="header" class="header header_scroll">
+        <div class="header__container-navigation">
+            <div class="header__left-navigation">
+                <a style="margin-right: 95px;" href="https://fua-company/fua.vtc">
+                    <img class="header_logo" src="images/logo.png">
+                </a>
+                <button class="menu-toggle" style="display: none;">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <nav>
+                    <ul class="header_menu">
+                        <li>
+                            <a id="link__header" href="/">
+                                <svg fill="none" viewBox="0 0 24 24" class="icon_home">
+                                    <path fill="#fff"
+                                        d="m20.04 6.82-5.76-4.03c-1.57-1.1-3.98-1.04-5.49.13L3.78 6.83c-1 .78-1.79 2.38-1.79 3.64v6.9c0 2.55 2.07 4.63 4.62 4.63h10.78c2.55 0 4.62-2.07 4.62-4.62V10.6c0-1.35-.87-3.01-1.97-3.78Z"
+                                        opacity=".4" />
+                                    <path fill="#fff"
+                                        d="M12 18.75c-.41 0-.75-.34-.75-.75v-3c0-.41.34-.75.75-.75s.75.34.75.75v3c0 .41-.34.75-.75.75Z" />
+                                </svg>
+                                <span>Головна</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="link__header" href="/partners">
+                                Партнери
+                            </a>
+                        </li>
+                        <li>
+                            <a id="link__header" href="/about us">
+                                Про нас
+                            </a>
+                        </li>
+                        <li>
+                            <a id="link__header" href="/avtopark">
+                                Автопарк
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" id="link__header" onclick="openDropMenuInformation(event)">
+                                Інформація
+                            </a>
+                            <div class="dropMenu-information">
+                                <a href="/team" class="btn__dropMenuInfo">
+                                    Staff Team
+                                </a>
+                                <a href="/rules" class="btn__dropMenuInfo">
+                                    Правила
+                                </a>
+                                <a href="/statistics" class="btn__dropMenuInfo">
+                                    Статистика сервера
+                                </a>
+                                <a href="/apply" class="btn__dropMenuInfo">
+                                    Приєднуйтесь до нашої команди
+                                </a>
+                            </div>
+                        </li>
+                        <div class="container__language">
+                            <div class="container__language-selected" onclick="toggleLanguageMenu()">
+                                <a href="#" id="currentLang">
+                                    <img src="/images/languagues/uk.svg" id="currentLangImg">
+                                </a>
+                            </div>
+                            <div class="languages__container-dropMenu" id="languageMenu">
+                                <!-- <a href="/en/" id="en" onclick="changeLanguage(this.id)"
+                                            class="block__language">
+                                            <img src="/images/languagues/en.svg">
+                                            <span>English</span>
+                                        </a> -->
+                                <a href="#" id="ua" onclick="changeLanguage(this.id)" class="block__language">
+                                    <img src="/images/languagues/uk.svg">
+                                    <span>UA</span>
+                                </a>
+                            </div>
+                        </div>
+                        <a target="_blank" href="https://discord.gg/febsvYmF7n" class="help__btn-ds">
+                            Тех.підтримка
+                        </a>
+                        <!--<a href="/cabinet/login" class="header__user-info">
+                                    <div class="header__user-nickname">xdion</div>
+                                    <img src="/images/developers/xdion.jpg" class="header__user-avatar">
+                                </a>
+                                <a target="_blank" href="/cabiet/registration" class="help__btn-ds">
+                                    Зареєструватися
+                                </a> -->
+                    </ul>
+                </nav>
+                <div class="mobile__menu">
+                    <div class="mobile__menu-header">
+                        <a href="https://fua-company/fua.vtc" class="mobile__logo">
+                            <img class="header_logo" src="images/logo.png" alt="Logo">
+                        </a>
+                        <div class="btn__close-mobile-menu">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <nav class="mobile__navigation">
+                        <ul class="navigation__mobile-menu">
+                            <li class="menu__item">
+                                <a href="/" class="menu__link">
+                                    <span class="menu__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="m20.04 6.82-5.76-4.03c-1.57-1.1-3.98-1.04-5.49.13L3.78 6.83c-1 .78-1.79 2.38-1.79 3.64v6.9c0 2.55 2.07 4.63 4.62 4.63h10.78c2.55 0 4.62-2.07 4.62-4.62V10.6c0-1.35-.87-3.01-1.97-3.78Z"
+                                                fill="white" opacity="0.4" />
+                                            <path
+                                                d="M12 18.75c-.41 0-.75-.34-.75-.75v-3c0-.41.34-.75.75-.75s.75.34.75.75v3c0 .41-.34.75-.75.75Z"
+                                                fill="white" />
+                                        </svg>
+                                    </span>
+                                    <span class="menu__text">Головна</span>
+                                </a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="/partners" class="menu__link">
+                                    <span class="menu__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M9 11C11.2091 11 13 9.20914 13 7C13 4.79086 11.2091 3 9 3C6.79086 3 5 4.79086 5 7C5 9.20914 6.79086 11 9 11Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M16 3.13C16.8604 3.3503 17.623 3.8507 18.1676 4.55231C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89317 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                        </svg>
+                                    </span>
+                                    <span class="menu__text">Партнери</span>
+                                </a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="/about us" class="menu__link">
+                                    <span class="menu__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path
+                                                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M9.09 9C9.3251 8.33167 9.78915 7.76811 10.4 7.40913C11.0108 7.05016 11.7289 6.91894 12.4272 7.03871C13.1255 7.15848 13.7588 7.52152 14.2151 8.06353C14.6713 8.60553 14.9211 9.29152 14.92 10C14.92 12 11.92 13 11.92 13"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path d="M12 17H12.01" stroke="white" stroke-width="2"
+                                                stroke-linecap="round" />
+                                        </svg>
+                                    </span>
+                                    <span class="menu__text">Про нас</span>
+                                </a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="/avtopark" class="menu__link">
+                                    <span class="menu__icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path d="M16 3H1V16H16V3Z" stroke="white" stroke-width="2"
+                                                stroke-linecap="round" />
+                                            <path d="M16 8H20L23 11V16H16V8Z" stroke="white" stroke-width="2"
+                                                stroke-linecap="round" />
+                                            <path
+                                                d="M5.5 21C6.88071 21 8 19.8807 8 18.5C8 17.1193 6.88071 16 5.5 16C4.11929 16 3 17.1193 3 18.5C3 19.8807 4.11929 21 5.5 21Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                            <path
+                                                d="M18.5 21C19.8807 21 21 19.8807 21 18.5C21 17.1193 19.8807 16 18.5 16C17.1193 16 16 17.1193 16 18.5C16 19.8807 17.1193 21 18.5 21Z"
+                                                stroke="white" stroke-width="2" stroke-linecap="round" />
+                                        </svg>
+                                    </span>
+                                    <span class="menu__text">Автопарк</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+
+                    <div class="mobile__menu-footer">
+                        <div class="social__links">
+                            <a href="https://discord.gg/u3b2fdVGBh" target="_blank" class="social__link">Discord</a>
+                            <a href="https://www.tiktok.com/@freightmen.of.ukr" target="_blank"
+                                class="social__link">TikTok</a>
+                            <a href="https://www.instagram.com/freightmen_of_ukraine_army/?igsh=Y2ZubWRsbnptbHJv#"
+                                target="_blank" class="social__link">Instagram</a>
+                        </div>
+                        <div class="contact__info">
+                            <p>fua.vtc@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container__recruitment-main">
+        <span class="title__recruitment">Рекрутація</span>
+    </div>
+
+    <main class="main__applyes">
+
+        <div class="block__text-applyes title-applyes">
+            <h2 style="color: #e0e6ed; font-weight: 400;">Заявка на вступ до компанії</h2>
+        </div>
+
+        <div class="block__text-applyes" style="margin-top: 50px;">
+            <h3 class="text__400">Інформація</h3>
+            <h3 class="text__400" style="margin-top: 30px;">Вимоги</h3>
+            <div style="display: flex; flex-direction: column; margin-left: 40px; gap: 10px;">
+                <ul style="margin-top: 10px;">
+                    <li style="list-style: disc;">Вам повинно бути не менше 14 років</li>
+                    <li style="list-style: disc;">Ви повинні проїзжати на тиждень не менше ніж 5000 км</li>
+                    <li style="list-style: disc;">Бути активним, адекватним</li>
+                    <li style="list-style: disc;">Мати досвід управління фурою</li>
+                    <li style="list-style: disc;">Не перебувати в інших компаніях, коли подаєте заявку</li>
+                </ul>
+            </div>
+            <h3 class="text__400" style="margin-top: 30px;">Чому вашу заявку може бути відхилено?</h3>
+            <div style="display: flex; flex-direction: column; margin-left: 40px; gap: 10px;">
+                <ul style="margin-top: 10px;">
+                    <li style="list-style: disc;">Вам менше 14 років</li>
+                    <li style="list-style: disc;">Ви неправильно заповнили поля для подачі заявки</li>
+                    <li style="list-style: disc;">Ви подали заявку з фейковими або неповними даними</li>
+                    <li style="list-style: disc;">Ваша поведінка суперечить правилам проєкту</li>
+                    <li style="list-style: disc;">Ви вже подавали заявку раніше та отримали відмову</li>
+                    <li style="list-style: disc;">Ваша активність в компанії недостатня</li>
+                </ul>
+            </div>
+            <a href="services" class="help__btn-ds btn__join detalis__watch-how" id="popup__instruction"
+                style="margin-top: 30px;">Повна
+                інструкція
+            </a>
+
+            <div class="modal__instructions-container">
+                <img src="/images/01.png" class="left__img-instruction">
+                <div class="modal__instructions-content">
+                    <span class="detal__instruction-title--modal">ПОВНА ІНСТРУКЦІЯ</span>
+                    <div class="modal__blocks-content" style="margin-top: 30px;">
+                        <div class="modal__block steam__block-modal">
+                            <img src="/images/46453179.jpg" class="img__instruction-modal" loading="lazy">
+                            <div class="background__overlay"></div>
+                            <div class="top__img-content steam__top-img-content">
+                                <div style="display: flex; gap: 20px; align-items: center;">
+                                    <div class="logo__modal">
+                                        <img src="/images/discord-icon.svg" loading="lazy">
+                                    </div>
+                                    <span class="title__launcher">ПІД'ЄДНАЙТЕСЯ ЧЕРЕЗ DISCORD</span>
+                                </div>
+                            </div>
+                            <a href="https://discord.gg/6YPdWvfCPt" target="_blank" class="btn__connect-modal">
+                                <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_455_397)">
+                                        <path
+                                            d="M15.511 9.71614C15.511 10.5057 15.511 11.2952 15.511 12.0848C15.511 12.6121 15.511 13.1394 15.511 13.6667C15.511 13.9474 15.528 14.236 15.4989 14.5158C15.4972 14.5319 15.4952 14.5479 15.4931 14.5639C15.5024 14.4962 15.5118 14.4285 15.5212 14.3608C15.4968 14.5338 15.4513 14.7014 15.3847 14.8629C15.4107 14.8007 15.4367 14.7385 15.4627 14.6763C15.3957 14.8333 15.3105 14.9802 15.2075 15.1163C15.2484 15.0627 15.2893 15.0091 15.3302 14.9554C15.2264 15.0895 15.1077 15.2094 14.9749 15.3148C15.0289 15.2728 15.0828 15.2309 15.1368 15.1889C14.9957 15.2981 14.8427 15.3882 14.6785 15.4582C14.7438 15.4309 14.809 15.4037 14.8743 15.3764C14.7128 15.4431 14.5451 15.4886 14.3722 15.5129C14.4423 15.5039 14.5124 15.4949 14.5826 15.4858C14.3979 15.5095 14.2111 15.5038 14.0253 15.5038C13.7218 15.5038 13.4184 15.5038 13.115 15.5038C12.1131 15.5038 11.1113 15.5038 10.1095 15.5038C8.96655 15.5038 7.82364 15.5038 6.68072 15.5038C5.85932 15.5038 5.03791 15.5038 4.21652 15.5038C3.98146 15.5038 3.74013 15.5158 3.50657 15.4858C3.5743 15.4952 3.64201 15.5045 3.70974 15.5139C3.53674 15.4896 3.36908 15.4441 3.20759 15.3774C3.26981 15.4034 3.33202 15.4295 3.39423 15.4555C3.23721 15.3885 3.09032 15.3033 2.95418 15.2003C3.00781 15.2412 3.06146 15.282 3.11509 15.3229C2.98106 15.2191 2.86107 15.1005 2.7557 14.9676C2.79768 15.0216 2.83966 15.0756 2.88163 15.1295C2.77237 14.9884 2.68235 14.8354 2.61236 14.6713C2.6396 14.7365 2.66683 14.8018 2.69408 14.8671C2.62744 14.7055 2.58195 14.5379 2.55758 14.3649C2.56663 14.435 2.57567 14.5052 2.58471 14.5753C2.56097 14.3907 2.56678 14.2038 2.56678 14.018C2.56678 13.7145 2.56678 13.4111 2.56678 13.1077C2.56678 12.1059 2.56678 11.1041 2.56678 10.1022C2.56678 8.95929 2.56678 7.81638 2.56678 6.67345C2.56678 5.85204 2.56678 5.03063 2.56678 4.20924C2.56678 3.97419 2.5547 3.73286 2.58471 3.4993C2.57534 3.56703 2.56597 3.63474 2.55658 3.70247C2.58094 3.52946 2.62644 3.3618 2.69307 3.20031C2.66706 3.26254 2.64106 3.32475 2.61504 3.38696C2.68202 3.22993 2.76725 3.08305 2.87021 2.94691C2.82934 3.00054 2.78847 3.05418 2.74758 3.10782C2.8514 2.97378 2.97002 2.85379 3.10286 2.74843C3.04889 2.79041 2.99493 2.83238 2.94098 2.87436C3.08206 2.7651 3.23511 2.67508 3.39926 2.60508C3.33399 2.63233 3.26872 2.65956 3.20345 2.6868C3.36496 2.62016 3.53262 2.57467 3.70561 2.55031C3.63547 2.55936 3.56534 2.5684 3.49518 2.57743C3.78232 2.54053 4.08171 2.5595 4.37038 2.5595C4.8951 2.5595 5.41985 2.5595 5.94457 2.5595C6.72996 2.5595 7.51535 2.5595 8.30076 2.5595C8.73169 2.5595 9.09478 2.20706 9.09765 1.77401C9.10049 1.34524 8.74311 0.977119 8.31215 0.977119C7.52092 0.977119 6.72968 0.977119 5.93844 0.977119C5.41543 0.977119 4.89243 0.977119 4.36943 0.977119C4.00697 0.977119 3.65653 0.971441 3.29614 1.02217C2.77977 1.09489 2.32005 1.35021 1.92437 1.67917C1.53613 2.00192 1.26701 2.46215 1.10974 2.93652C1.00085 3.26489 0.984375 3.61066 0.984375 3.95322C0.984375 4.66123 0.984375 5.36926 0.984375 6.07725C0.984375 7.19468 0.984375 8.31212 0.984375 9.42954C0.984375 10.4938 0.984375 11.558 0.984375 12.6222C0.984375 13.1706 0.984375 13.719 0.984375 14.2675C0.984375 15.0403 1.29331 15.799 1.86124 16.3291C2.39017 16.8229 3.08637 17.0861 3.8077 17.0861C4.38198 17.0861 4.95626 17.0861 5.53055 17.0861C6.60445 17.0861 7.67835 17.0861 8.75225 17.0861C9.86317 17.0861 10.9741 17.0861 12.085 17.0861C12.7703 17.0861 13.4556 17.0861 14.1409 17.0861C14.529 17.0861 14.9215 17.054 15.2838 16.9046C15.4291 16.8446 15.5722 16.787 15.7085 16.7089C15.8481 16.629 15.9741 16.5273 16.0998 16.4276C16.3005 16.2684 16.4533 16.0761 16.6053 15.8704C16.9103 15.4573 17.0557 14.9365 17.0896 14.43C17.1075 14.1641 17.0934 13.8933 17.0934 13.6272C17.0934 13.0934 17.0934 12.5597 17.0934 12.0259C17.0934 11.2598 17.0934 10.4937 17.0934 9.72753C17.0934 9.2966 16.7409 8.93351 16.3079 8.93064C15.8791 8.92779 15.511 9.28517 15.511 9.71614Z"
+                                            fill="#FDD116"></path>
+                                        <path
+                                            d="M11.2211 2.55949C11.9677 2.56018 12.7144 2.56087 13.461 2.56155C14.3766 2.5624 15.2921 2.56324 16.2076 2.56408C16.2371 2.56412 16.2666 2.56414 16.2962 2.56417C16.7271 2.56456 17.0902 2.21143 17.0931 1.77867C17.0959 1.34961 16.7385 0.982175 16.3076 0.981788C15.5609 0.981102 14.8142 0.980417 14.0676 0.979731C13.1521 0.978888 12.2365 0.978044 11.321 0.9772C11.2915 0.977165 11.262 0.977147 11.2325 0.977112C10.8015 0.976725 10.4384 1.32985 10.4356 1.76261C10.4327 2.19166 10.7901 2.55911 11.2211 2.55949Z"
+                                            fill="#FDD116"></path>
+                                        <path
+                                            d="M17.088 6.84915C17.0887 6.10249 17.0894 5.35584 17.0901 4.60917C17.0909 3.69365 17.0918 2.77811 17.0926 1.86259C17.0926 1.83306 17.0927 1.80355 17.0927 1.77402C17.0931 1.34309 16.74 0.979994 16.3072 0.977129C15.8781 0.974281 15.5107 1.33168 15.5103 1.76262C15.5096 2.50929 15.5089 3.25594 15.5082 4.00261C15.5074 4.91813 15.5065 5.83367 15.5057 6.74919C15.5057 6.77872 15.5056 6.80823 15.5056 6.83776C15.5052 7.26869 15.8583 7.63179 16.2911 7.63465C16.7202 7.6375 17.0876 7.2801 17.088 6.84915Z"
+                                            fill="#FDD116"></path>
+                                        <path
+                                            d="M8.6318 10.5498C8.92089 10.2609 9.20998 9.97204 9.49907 9.68318C10.187 8.99582 10.8749 8.30846 11.5628 7.62109C12.3805 6.80404 13.1982 5.98697 14.016 5.16991C14.6945 4.49195 15.3729 3.814 16.0515 3.13605C16.3221 2.86559 16.5928 2.59515 16.8634 2.3247C17.168 2.0204 17.1628 1.50742 16.8575 1.20587C16.5496 0.901904 16.0437 0.906984 15.7386 1.21186C15.4495 1.50072 15.1604 1.78956 14.8714 2.07843C14.1834 2.7658 13.4955 3.45316 12.8076 4.14052C11.9899 4.95756 11.1722 5.77463 10.3545 6.5917C9.67596 7.26965 8.99747 7.9476 8.31898 8.62556C8.04832 8.89601 7.77765 9.16645 7.50698 9.43689C7.20246 9.74119 7.20761 10.2542 7.51298 10.5557C7.82079 10.8597 8.32667 10.8546 8.6318 10.5498Z"
+                                            fill="#FDD116"></path>
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_455_397">
+                                            <rect width="18" height="18" fill="white"></rect>
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                https://discord.gg/6YPdWvfCPt</a>
+                            <div class="more__content-block-modal steam-more-content">
+                                <ul style="display: flex; gap: 10px; flex-direction: column;">
+                                    <span>1. Під'єднатися до нашого Discord</span>
+                                    <span style="display: flex; align-items: center; gap: 5px; margin-left: 15px;">
+                                        Просто натисни на кнопку та опинешся на нашому сервері VTC
+                                        <a href="https://discord.gg/6YPdWvfCPt" target="_blank"
+                                            class="btn__joinToOurDiscordChanell">Під'єднатись</a>
+                                    </span>
+                                    <span>2. Подача заявки на TruckersMP</span>
+                                    <span style="display: flex; align-items: center; gap: 5px; margin-left: 15px;">
+                                        1. Перейди на сайт -
+                                        <a href="https://truckersmp.com/" target="_blank"
+                                            class="btn__joinToOurDiscordChanell">TruckersMP</a>
+                                    </span>
+                                    <span style="margin-left: 15px;">
+                                        2. Увійди в свій акаунт через steam
+                                    </span>
+                                    <span style="display: flex; align-items: center; gap: 5px; margin-left: 15px;">
+                                        3. Перейди за посиланням до нашої компанії -
+                                        <a href="https://truckersmp.com/vtc/81090" target="_blank"
+                                            class="btn__joinToOurDiscordChanell">VTC - Freightmen of Ukraine</a>
+                                    </span>
+                                    <span style="margin-left: 15px;">
+                                        4. Заповни заявку за вказівками
+                                    </span>
+                                    <span>3. Подача заявки на TruckersHUB</span>
+                                    <span style="display: flex; align-items: center; gap: 5px; margin-left: 15px;">
+                                        1. Перейди на сайт -
+                                        <a href="https://truckershub.in/" target="_blank"
+                                            class="btn__joinToOurDiscordChanell">TruckersHUB</a>
+                                    </span>
+                                    <span style="margin-left: 15px;">
+                                        2. Увійди в свій акаунт через steam
+                                    </span>
+                                    <span style="display: flex; align-items: center; gap: 5px; margin-left: 15px;">
+                                        3. Перейди за посиланням до нашої компанії -
+                                        <a href="https://truckershub.in/vtc/1407" target="_blank"
+                                            class="btn__joinToOurDiscordChanell">VTC TruckersHUB - Freightmen of
+                                            Ukraine</a>
+                                    </span>
+                                    <span style="margin-left: 15px;">
+                                        4. Натисни - Join to company
+                                    </span>
+                                    <span style="margin-left: 15px;">
+                                        5. Заповни подану заявку на сайті
+                                    </span>
+                                    <span style="margin-left: 15px;">
+                                        6. Після прийняття заявки, завантаж TruckersHUB
+                                    </span>
+                                    <span>4. Подача заявки на нашому сайті</span>
+                                    <span style="margin-left: 15px;">
+                                        1. Ознайомся з вимогами та чому вашу заявку можуть відхилити
+                                    </span>
+                                    <span style="margin-left: 15px;">2. Уважно прочитай, що потрібно заповнити в кожне
+                                        поле</span>
+                                    <span style="margin-left: 15px;">3. Після заповнення натисни на кнопку "Подати
+                                        заявку"</span>
+                                    <span style="margin-left: 15px;">4. На протязі 24 годин тобі відпишуть в
+                                        Discord</span>
+                                </ul>
+                            </div>
+                            <div class="fake-border fake-border--yellow"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form style="margin-top: 10px; display: flex; flex-direction: column; gap: 20px;">
+                <div class="container__input-apply" style="margin-top: 25px;">
+                    <label>Email <span style="color: red;">*</span></label>
+                    <input type="text" name="email" id="email" autocomplete="on" placeholder="name@email.com"
+                        value="@gmail.com" class="input input__apply" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                </div>
+                <div class="container__input-apply">
+                    <label>Ім'я коритувача Discord <span style="color: red;">*</span></label>
+                    <input type="text" name="usernameDiscord" id="usernameDiscord" autocomplete="on"
+                        placeholder="Ім'я коритувача Discord" class="input input__apply">
+                </div>
+                <div class="container__input-apply">
+                    <label>Чи є у Вас якісь DLC? <span style="color: red;">*</span></label>
+                    <input type="text" name="dlc" id="dlc" autocomplete="on" placeholder="Чи є у Вас якісь DLC?"
+                        class="input input__apply">
+                </div>
+                <div class="container__input-apply">
+                    <label>Ваш вік <span style="color: red;">*</span></label>
+                    <input class="input input__apply" name="age" min="14" max="99" maxlength="2" type="number" id="age"
+                        placeholder="Ваш вік" oninput="this.value = this.value.slice(0, 2);">
+                </div>
+                <div class="container__input-apply">
+                    <label>Ваша активність на тиждень <span style="color: red;">*</span></label>
+                    <input class="input input__apply" name="activity" type="text" id="activity"
+                        placeholder="Ваша активність на тиждень">
+                </div>
+                <div class="container__input-apply">
+                    <label>Чому ви хочете приєднатися саме до нашої компанії? <span style="color: red;">*</span></label>
+                    <input class="input input__apply" type="text" id="person"
+                        placeholder="Чому ви хочете приєднатися саме до нашої компанії?">
+                </div>
+                <div class="container__input-apply">
+                    <label>Скільки Ви проїзжаєте на тиждень? (В км) <span style="color: red;">*</span></label>
+                    <input class="input input__apply" type="text" id="km" placeholder="1000 - 5000 км" maxlength="500">
+                </div>
+                <div class="container__input-apply">
+                    <label>Коментар (Необов'язково)</label>
+                    <input class="input input__apply" type="text" id="comment" placeholder="Коментар">
+                </div>
+                <div style="width: 556px; display: flex; gap: 20px; align-items: center;">
+                    <button class="help__btn-ds" type="submit">
+                        Подати заявку
+                    </button>
+                    <a target="_blank" href="https://discord.gg/febsvYmF7n" class="help__btn-ds">
+                        Не вийшло подати заявку
+                    </a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <div class="container__form-sended">
+        <div class="block__form-sended">
+            <img src="/images/ok.svg" width="96px">
+            <h2 class="text__400">Вашу заявку успішно надіслано!</h2>
+            <h3 class="text__400">Заявку буде перевірено протягом 24 годин</h3>
+            <div class="btn__close block__form-sended-btn--close" id="close__btn">
+                <img src="/images/close.svg">
+            </div>
+            <a href="/" class="btn-cookie accept-btn back__toIndex-btn">
+                На головну
+            </a>
+        </div>
+    </div>
+
+    <div class="popup__recruitment" id="popupRecruitment">
+        <div class="popup__content-recruitment">
+            <div class="btn__close-popup" id="btn__close-popup">
+                <img src="/images/close.svg">
+            </div>
+            <span class="popup__title">Інформація</span>
+            <div class="popup__recruitment-text">Ви вже подавали заявку<span id="days-popup"> </span></div>
+            <div class="popup__recruitment-text">Подайте ще раз через<span id="days-next-form"> </span></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

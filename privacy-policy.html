@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUA – Freightmen of Ukraine Army</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="/js/js.js" defer></script>
+    <script src="/js/getCookie.js" defer></script>
+
+    <style>
+        @font-face {
+            font-family: 'Gotham Pro';
+            src: url(css/fonts/GothamPro-Black.woff) format("woff");
+            font-weight: 900;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Gotham Pro';
+            src: url(css/fonts/GothamPro.woff) format("woff");
+            font-weight: 400;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Gotham Pro';
+            src: url(css/fonts/GothamPro-Medium.woff) format("woff");
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'e-UkraineHead';
+            src: url(css/fonts/e-UkraineHead-Bold.woff) format("woff");
+            font-weight: 700;
+            font-display: swap;
+        }
+
+        :root {
+            --bg: #0d1117;
+            --card: #161b22;
+            --accent: #1f6feb;
+            --muted: #8b949e;
+            --text: #c9d1d9;
+            --border: #30363d;
+            --font-family: 'Gotham Pro', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 24px;
+        }
+
+        li {
+            list-style: disc !important;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: 150px;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 24px 0;
+            width: 100%;
+            z-index: 5;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            margin: 0;
+            color: #fff;
+        }
+
+        h2 {
+            color: #fff;
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+            margin-top: 18px;
+            border: 1px solid var(--border);
+        }
+
+        .meta {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+        }
+
+        ul {
+            margin: 0 0 12px 20px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        footer {
+            margin-top: 28px;
+            color: var(--muted);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        a {
+            color: var(--accent);
+        }
+
+        .contact {
+            background: #21262d;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        code {
+            background: #1e2630;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #ffdf5d;
+        }
+
+        @media (max-width:600px) {
+            body {
+                padding: 16px;
+            }
+
+            h1 {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div>
+                <h1>Політика конфіденційності
+                    <div style="font-size:0.85rem;color:var(--muted)">Freightmen of Ukraine Army — ETS2 / TruckersMP VTC
+                    </div>
+                </h1>
+                <a href="/" class="help__btn-ds"
+                    style="margin-top: 20px; display: flex; justify-content: center; align-items: center;">На
+                    головну</a>
+            </div>
+        </header>
+
+        <div class="card">
+            <div class="meta">Дата набуття чинності: <strong>08.08.2025</strong></div>
+
+            <section>
+                <h2>1. Загальні положення</h2>
+                <p>Ця Політика конфіденційності визначає порядок збору, використання, зберігання та захисту персональних
+                    даних учасників віртуальної компанії <strong>Freightmen of Ukraine Army</strong> (далі —
+                    <em>Компанія</em>).
+                </p>
+                <p>Компанія поважає приватність учасників і здійснює обробку даних відповідно до чинного законодавства
+                    України та міжнародних практик у сфері захисту персональних даних.</p>
+            </section>
+
+            <section style="margin-top: 20px;">
+                <h2>2. Які дані ми збираємо</h2>
+                <ul>
+                    <li><strong>Облікова інформація</strong>: нікнейм у грі ETS2/TruckersMP, ID TruckersMP, ID Steam,
+                        аватар/нікнейм Steam.
+                    </li>
+                    <li><strong>Контактні дані</strong>: електронна адреса, Discord-нікнейм (за наявності).</li>
+                    <li><strong>Технічні дані</strong>: IP-адреса, час підключення до сервера/форуму, дані про
+                        використання внутрішніх сервісів.</li>
+                    <li><strong>Ігрова статистика</strong>: кількість рейсів, пробіг, виконані замовлення, рейтинг.</li>
+                </ul>
+            </section>
+
+            <section style="margin-top: 20px;">
+                <h2>3. Мета збору та правові підстави</h2>
+                <p>Ми обробляємо персональні дані для таких цілей:</p>
+                <ul>
+                    <li>керування членством та доступом до внутрішніх ресурсів Компанії;</li>
+                    <li>координації ігрових подій, зв’язку з учасниками та оголошень;</li>
+                    <li>ведення статистики та рейтингових таблиць;</li>
+                    <li>забезпечення безпеки, протидії шахрайству та порушенням правил спільноти.</li>
+                </ul>
+                <p>Правовою підставою для обробки є згода користувача, необхідність виконання внутрішніх правил
+                    спільноти, а також законодавчі вимоги у випадках, передбачених законом.</p>
+            </section>
+
+            <section style="margin-top: 20px;">
+                <h2>4. Передача даних третім особам</h2>
+                <p>Ми не продаємо та не передаємо персональні дані третім комерційним партнерам. Передача можлива лише у
+                    таких випадках:</p>
+                <ul>
+                    <li>за згодою користувача;</li>
+                    <li>на вимогу законодавства;</li>
+                    <li>партнерам, що забезпечують технічну роботу проекту (хостинг, сервіси розсилок) — тільки
+                        необхідні дані та за умов конфіденційності.</li>
+                </ul>
+            </section>
+
+            <section style="margin-top: 20px;">
+                <h2>5. Зберігання та захист даних</h2>
+                <p>Дані зберігаються стільки, скільки потрібно для цілей, для яких вони були зібрані, або до видалення
+                    користувачем. Застосовуються технічні та організаційні заходи захисту, включно з обмеженням доступу,
+                    бекапами, шифруванням.</p>
+            </section>
+
+            <section style="margin-top: 20px;">
+                <h2>6. Права користувачів</h2>
+                <ul>
+                    <li>отримувати інформацію про обробку своїх персональних даних;</li>
+                    <li>вимагати виправлення або видалення даних;</li>
+                    <li>відкликати згоду на обробку;</li>
+                    <li>скаржитися до уповноважених органів.</li>
+                </ul>
+            </section>
+
+            <section style="margin-top: 20px;">
+                <h2>7. Cookies та аналітика</h2>
+                <p>При використанні cookies чи аналітики ми попередимо та отримаємо згоду користувача.</p>
+            </section>
+
+            <section style="margin-top: 20px;">
+                <h2>8. Зміни до Політики</h2>
+                <p>Ми можемо змінювати цю Політику, оновлена версія публікується на офіційних ресурсах.</p>
+            </section>
+
+            <section style="margin-top: 20px;">
+                <h2>9. Контакти</h2>
+                <div class="contact">
+                    <p>Для питань або реалізації прав — зв’яжіться з нами:</p>
+                    <ul>
+                        <li>Discord: <a href="https://discord.gg/u3b2fdVGBh"
+                                target="_blank">https://discord.gg/u3b2fdVGBh</a></li>
+                        <li>Email: fua.vtc@gmail.com </li>
+                    </ul>
+                </div>
+            </section>
+
+            <footer>
+                <p>Документ підготовлено для внутрішнього використання Freightmen of Ukraine Army.
+                </p>
+            </footer>
+        </div>
+    </div>
+</body>
+
+</html>
