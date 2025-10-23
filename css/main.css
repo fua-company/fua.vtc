@@ -3394,6 +3394,12 @@ input[type="text"] {
     }
 }
 
+@media (max-height: 800px) {
+    .container__avtopark img {
+        display: none;
+    }
+}
+
 @media (max-width: 1026px) {
     .header_menu {
         display: none;
