@@ -116,11 +116,25 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (id === 'age') {
             if (!/^\d{1,2}$/.test(value) || +value < 14 || +value > 99) message = 'Вік має бути від 14 до 99';
         } else if (id === 'activity') {
-            if (value.length < 3) message = 'Опишіть Вашу активність';
+            if (/[\.,\/\\]/.test(value)) {
+                message = 'Не можна використовувати крапки, коми або слеші';
+            } else if (value.length < 3) {
+                message = 'Опишіть Вашу активність';
+            }
         } else if (id === 'person') {
-            if (value.length < 5) message = 'Напишіть більше про мотивацію приєднатися';
+            if (/[\.,\/\\]/.test(value)) {
+                message = 'Не можна використовувати крапки, коми або слеші';
+            } else if (value.length < 5) {
+                message = 'Напишіть більше про мотивацію приєднатися';
+            }
         } else if (id === 'km') {
-            if (!/^\d{3,5}$/.test(value)) message = 'Вкажіть кількість км від 100 до 99999';
+            if (/[\.,\/\\]/.test(value)) {
+                message = 'Не можна використовувати крапки, коми або слеші';
+            } else if (!/^\d+$/.test(value)) {
+                message = 'Вкажіть кількість не менше 1500 км';
+            } else if (parseInt(value) < 1500) {
+                message = 'Вкажіть кількість не менше 1500 км';
+            }
         }
 
         input.classList.remove('input-error');
