@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const km = document.getElementById('km').value;
         const comment = document.getElementById('comment').value || "Немає";
 
-        const link = truckersmp.startsWith('http') ? `[TruckersMP профіль](${truckersmp})` : truckersmp;
+        const link = truckersmp.startsWith('http') ? `<${truckersmp}>` : truckersmp;
 
         const message = {
             title: "📥 Нова заявка на вступ до компанії",
