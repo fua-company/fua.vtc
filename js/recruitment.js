@@ -3,31 +3,25 @@ document.addEventListener('DOMContentLoaded', function () {
     const webhookURL = "https://discord.com/api/webhooks/1396248919377445016/_0PgLEUDYkGznLQsE7gyh9PA_aNBD2kmxxAZLdiugDdOJOQFKvBzldCQbjKrFcxZfF4-";
     let isSubmitting = false;
 
-    // === Валидация при вводе ===
     form.querySelectorAll('input').forEach(input => {
         input.addEventListener('input', () => {
             validateField(input);
         });
     });
 
-    // === Обработка отправки формы ===
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         if (isSubmitting) return;
         isSubmitting = true;
 
         let isValid = true;
-
-        // Очистка ошибок
         form.querySelectorAll('.error-message').forEach(el => el.remove());
         form.querySelectorAll('input').forEach(input => input.classList.remove('input-error'));
 
-        // Проверка каждого поля
         form.querySelectorAll('input').forEach(input => {
             if (!validateField(input)) isValid = false;
         });
 
-        // Проверка капчи
         const captchaResponse = hcaptcha.getResponse();
         const captchaContainer = document.getElementById('hcaptcha-container');
         captchaContainer?.querySelector('.error-message')?.remove();
@@ -48,7 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        // Проверка частоты отправки (1 раз на 7 днів)
         const lastSubmit = localStorage.getItem('lastFormSubmit');
         if (lastSubmit) {
             const lastDate = new Date(lastSubmit);
@@ -71,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // === Получаем значения полей ===
         const email = document.getElementById('email').value;
         const discord = document.getElementById('usernameDiscord').value;
         const truckersmp = document.getElementById('truckersmp').value;
@@ -82,35 +74,30 @@ document.addEventListener('DOMContentLoaded', function () {
         const km = document.getElementById('km').value;
         const comment = document.getElementById('comment').value || "Немає";
 
-        // === Объект данных ===
-        const data = { email, discord, truckersmp, dlc, age, activity, reason, km, comment };
+        const link = truckersmp.startsWith('http') ? `<${truckersmp}>` : truckersmp;
 
-        // === Формируем embed для Discord ===
         const message = {
             title: "📥 Нова заявка на вступ до компанії",
             color: 0x3498DB,
             fields: [
-                { name: "📧 Email", value: data.email, inline: true },
-                { name: "👤 Discord username", value: data.discord, inline: true },
-                { name: "🚛 Профіль TruckersMP", value: data.truckersmp, inline: false },
-                { name: "🧩 DLC", value: data.dlc, inline: true },
-                { name: "🎂 Вік", value: data.age, inline: true },
-                { name: "🚛 Активність на тиждень", value: data.activity, inline: false },
-                { name: "❓ Чому хоче приєднатися", value: data.reason, inline: false },
-                { name: "📏 Км/тиждень", value: data.km, inline: true },
-                { name: "💬 Коментар", value: data.comment, inline: false },
+                { name: "📧 Email", value: email, inline: true },
+                { name: "👤 Discord username", value: discord, inline: true },
+                { name: "🚛 Профіль TruckersMP", value: link, inline: false },
+                { name: "🧩 DLC", value: dlc, inline: true },
+                { name: "🎂 Вік", value: age, inline: true },
+                { name: "🚛 Активність на тиждень", value: activity, inline: false },
+                { name: "❓ Чому хоче приєднатися", value: reason, inline: false },
+                { name: "📏 Км/тиждень", value: km, inline: true },
+                { name: "💬 Коментар", value: comment, inline: false },
                 { name: "🕒 Дата", value: new Date().toLocaleString('uk-UA'), inline: false },
             ],
-            footer: { text: "EUROFEST GROUP | Рекрутинг" },
+            footer: { text: "Freightmen of Ukraine Army | Рекрутинг" },
             timestamp: new Date(),
         };
 
-        // === Отправка в Discord webhook ===
         fetch(webhookURL, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 username: "Freightmen of Ukraine - Онлайн заявки на вступ",
                 embeds: [message],
@@ -123,8 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 form.reset();
                 hcaptcha.reset();
             }
-        }).catch(error => {
-            console.error("Помилка при відправці заявки:", error);
+        }).catch(() => {
             alert("Сталася помилка при відправці заявки.");
         }).finally(() => {
             isSubmitting = false;
@@ -146,32 +132,20 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (id === 'usernameDiscord') {
             if (value.length < 3) message = "Ім'я користувача має містити щонайменше 3 символи";
         } else if (id === 'truckersmp') {
-            if (value.length < 10 || !value.includes('truckersmp.com')) {
-                message = 'Введіть посилання на профіль TruckersMP';
-            }
+            if (value.length < 10 || !value.includes('truckersmp.com')) message = 'Введіть посилання на профіль TruckersMP';
         } else if (id === 'dlc') {
             if (value === '') message = "Це поле обов'язкове для заповнення";
         } else if (id === 'age') {
-            if (!/^\d{1,2}$/.test(value) || +value < 14 || +value > 99)
-                message = 'Вік має бути від 14 до 99';
+            if (!/^\d{1,2}$/.test(value) || +value < 14 || +value > 99) message = 'Вік має бути від 14 до 99';
         } else if (id === 'activity') {
-            if (/[\.,\/\\]/.test(value)) {
-                message = 'Не можна використовувати крапки, коми або слеші';
-            } else if (value.length < 3) {
-                message = 'Опишіть Вашу активність';
-            }
+            if (/[\.,\/\\]/.test(value)) message = 'Не можна використовувати крапки, коми або слеші';
+            else if (value.length < 3) message = 'Опишіть Вашу активність';
         } else if (id === 'person') {
-            if (/[\.,\/\\]/.test(value)) {
-                message = 'Не можна використовувати крапки, коми або слеші';
-            } else if (value.length < 5) {
-                message = 'Напишіть більше про мотивацію приєднатися';
-            }
+            if (/[\.,\/\\]/.test(value)) message = 'Не можна використовувати крапки, коми або слеші';
+            else if (value.length < 5) message = 'Напишіть більше про мотивацію приєднатися';
         } else if (id === 'km') {
-            if (/[\.,\/\\]/.test(value)) {
-                message = 'Не можна використовувати крапки, коми або слеші';
-            } else if (!/^\d+$/.test(value) || parseInt(value) < 1500) {
-                message = 'Вкажіть кількість не менше 1500 км';
-            }
+            if (/[\.,\/\\]/.test(value)) message = 'Не можна використовувати крапки, коми або слеші';
+            else if (!/^\d+$/.test(value) || parseInt(value) < 1500) message = 'Вкажіть кількість не менше 1500 км';
         }
 
         input.classList.remove('input-error');
@@ -190,8 +164,6 @@ document.addEventListener('DOMContentLoaded', function () {
         error.className = 'error-message';
         error.textContent = message;
         input.parentNode.appendChild(error);
-        requestAnimationFrame(() => {
-            error.classList.add('visible');
-        });
+        requestAnimationFrame(() => error.classList.add('visible'));
     }
 });
