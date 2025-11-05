@@ -471,7 +471,6 @@ header.scroll {
     margin: 4px 0;
 }
 
-/* Анимация появления элементов меню */
 .mobile__menu.active .menu__item {
     animation: slideInLeft 0.4s ease forwards;
 }
@@ -845,7 +844,7 @@ footer * {
 .help__btn-ds:hover {
     color: var(--primary);
     background-color: #2196f3;
-    box-shadow: none;
+    box-shadow: 0 0 25px #298cd8;
     border-color: #2196f3;
     transform: translateY(-3px);
 }
@@ -881,6 +880,7 @@ footer * {
     background-color: #298cd8;
     box-shadow: 0 10px 20px -10px rgba(27, 85, 226, .59);
     border: 1px solid #298cd8;
+    box-shadow: 2px 5px 25px #298cd8;
     transform: translateY(-3px);
 }
 
@@ -1350,6 +1350,8 @@ footer * {
 
 .accept-btn:hover {
     box-shadow: none;
+    background: #298cd8;
+    box-shadow: 0 0 25px #298cd8;
 }
 
 .cancel-btn {
@@ -3162,6 +3164,7 @@ input[type="text"] {
     background: #1a9fff;
     color: var(--primary);
     transform: translateY(-3px);
+    box-shadow: 0 0 25px #298cd8;
 }
 
 .social__footer:hover svg path {
@@ -3381,6 +3384,45 @@ input[type="text"] {
 .hidden-fade {
     opacity: 0;
     visibility: hidden;
+}
+
+.snow-container {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.snowflake {
+    position: absolute;
+    top: -10px;
+    user-select: none;
+    color: white;
+    z-index: 10000;
+    opacity: 0.8;
+    animation: fall linear infinite;
+}
+
+/* Одна анимация: падение + покачивание */
+@keyframes fall {
+    0% {
+        transform: translateX(0) translateY(-10px) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateX(var(--sway, 20px)) translateY(50vh) rotate(180deg);
+    }
+
+    100% {
+        transform: translateX(calc(var(--sway, 20px) * -1)) translateY(100vh) rotate(360deg);
+        opacity: 0.6;
+    }
 }
 
 @media (max-width: 1136px) {
