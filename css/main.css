@@ -3404,7 +3404,6 @@ input[type="text"] {
     animation: fall linear infinite;
 }
 
-/* Одна анимация: падение + покачивание */
 @keyframes fall {
     0% {
         transform: translateX(0) translateY(-10px) rotate(0deg);

@@ -14,6 +14,7 @@
     <script src="js/js.js" defer></script>
     <script src="js/getCookie.js" defer></script>
     <script src="js/recruitment.js" defer></script>
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
 
     <a class="some_problems" href="https://discord.gg/febsvYmF7n" target="_blank">
         <div style="display: flex; justify-content: center; align-items: center;">
@@ -404,6 +405,11 @@
                         placeholder="Ім'я коритувача Discord" class="input input__apply">
                 </div>
                 <div class="container__input-apply">
+                    <label>Профіль TruckersMP <span style="color: red;">*</span></label>
+                    <input type="text" name="truckersmp" id="truckersmp" autocomplete="on"
+                        placeholder="Профіль TruckersMP" class="input input__apply">
+                </div>
+                <div class="container__input-apply">
                     <label>Чи є у Вас якісь DLC? <span style="color: red;">*</span></label>
                     <input type="text" name="dlc" id="dlc" autocomplete="on" placeholder="Чи є у Вас якісь DLC?"
                         class="input input__apply">
@@ -430,6 +436,9 @@
                 <div class="container__input-apply">
                     <label>Коментар (Необов'язково)</label>
                     <input class="input input__apply" type="text" id="comment" placeholder="Коментар">
+                </div>
+                <div id="hcaptcha-container">
+                    <div class="h-captcha" data-sitekey="e43cdbd6-10aa-49a0-8d54-43783a32fdc6"></div>
                 </div>
                 <div style="width: 556px; display: flex; gap: 20px; align-items: center;">
                     <button class="help__btn-ds" type="submit">
