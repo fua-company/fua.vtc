@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const km = document.getElementById('km').value;
         const comment = document.getElementById('comment').value || "Немає";
 
-        // const link = truckersmp.startsWith('http') ? `<${truckersmp}>` : truckersmp;
+        const link = truckersmp.startsWith('http') ? `<${truckersmp}>` : truckersmp;
 
         const message = {
             title: "📥 Нова заявка на вступ до компанії",
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
             fields: [
                 { name: "📧 Email", value: email, inline: true },
                 { name: "👤 Discord username", value: discord, inline: true },
-                { name: "🚛 Профіль TruckersMP", value: truckersmp, inline: false },
+                { name: "🚛 Профіль TruckersMP", value: link, inline: false },
                 { name: "🧩 DLC", value: dlc, inline: true },
                 { name: "🎂 Вік", value: age, inline: true },
                 { name: "🚛 Активність на тиждень", value: activity, inline: false },
