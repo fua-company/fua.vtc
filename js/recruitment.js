@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const km = document.getElementById('km').value;
         const comment = document.getElementById('comment').value || "Немає";
 
-        const link = truckersmp.startsWith('http') ? `<${truckersmp}>` : truckersmp;
+        // const link = truckersmp.startsWith('http') ? `<${truckersmp}>` : truckersmp;
 
         const message = {
             title: "📥 Нова заявка на вступ до компанії",
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
             fields: [
                 { name: "📧 Email", value: email, inline: true },
                 { name: "👤 Discord username", value: discord, inline: true },
-                { name: "🚛 Профіль TruckersMP", value: link, inline: false },
+                { name: "🚛 Профіль TruckersMP", value: truckersmp, inline: false },
                 { name: "🧩 DLC", value: dlc, inline: true },
                 { name: "🎂 Вік", value: age, inline: true },
                 { name: "🚛 Активність на тиждень", value: activity, inline: false },
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
         } else if (id === 'usernameDiscord') {
             if (value.length < 3) message = "Ім'я користувача має містити щонайменше 3 символи";
         } else if (id === 'truckersmp') {
-            if (value.length < 10 || !value.includes('truckersmp.com')) message = 'Введіть посилання на профіль TruckersMP';
+            if (value.length < 10 || !value.includes('truckersmp.com/user/')) message = 'Введіть посилання на профіль TruckersMP';
         } else if (id === 'dlc') {
             if (value === '') message = "Це поле обов'язкове для заповнення";
         } else if (id === 'age') {
